@@ -6,18 +6,18 @@ from object.ladder import LadderSnake
 dice = Dice()
 laddersnake = LadderSnake()
 
-cat_path = 'assets/nyan.png'
-cat_path_flip = 'assets/nyanflip.png'
+cat_path = 'Art/Cat_1.png'
+cat_path_flip = 'Art/Cat_1_Flip.png'
 
 class Cat(object):
     def __init__(self):
-        CAT_WIDTH, CAT_HEIGHT = 63, 38
+        CAT_WIDTH, CAT_HEIGHT = (192 * 0.4), (174 * 0.4)
         self.image = pygame.image.load(cat_path)
         self.imageflip = pygame.image.load(cat_path_flip)
         self.size = pygame.transform.scale(self.image, (CAT_WIDTH, CAT_HEIGHT))
         self.sizeflip = pygame.transform.scale(self.imageflip, (CAT_WIDTH, CAT_HEIGHT))
-        self.x = 4
-        self.y = 645
+        self.x = 0
+        self.y = 623
         self.row = 1
         self.column = 1
         self.jumpCount = 12
@@ -59,12 +59,11 @@ class Cat(object):
                 self.row = laddersnake.row_lad
                 self.column = laddersnake.column_lad
                 self.checkmove = False
-                self.y = 645 - ((self.row - 1) * 70)
+                self.y = 623 - ((self.row - 1) * 70)
                 if self.row % 2 == 0:
-                    self.x = 704 - ((self.column) * 70)
+                    self.x = 700 - ((self.column) * 70)
                 else:
-                    self.x = 4 + ((self.column - 1) * 70)
-
+                    self.x = 0 + ((self.column - 1) * 70)
     def draw(self, screen):
         if self.row % 2 == 0:
             screen.blit(self.sizeflip, (self.x, self.y))
