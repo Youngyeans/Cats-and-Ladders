@@ -1,4 +1,5 @@
 import pygame
+from Randcard import randcard
 
 class LadderSnake(object):
     def __init__(self):
@@ -21,7 +22,21 @@ class LadderSnake(object):
             'ch66' : [7,6,5,5],
             'ch76' : [8,6,6,8],
             'ch89' : [9,9,6,3],
-            'ch99' : [10,9,5,1]
+            'ch99' : [10,9,5,1],
+            #card
+            'ch10' : [1,10],
+            'ch15' : [2,6],
+            'ch20' : [2,1],
+            'ch29' : [3,9],
+            'ch37' : [4,4],
+            'ch52' : [6,2],
+            'ch56' : [6,5],
+            'ch61' : [7,1],
+            'ch71' : [8,10],
+            'ch77' : [8,4],
+            'ch86' : [9,6],
+            'ch93' : [10,3],
+            'ch98' : [10,3]
         }
         self.row_lad = 1
         self.column_lad = 1
