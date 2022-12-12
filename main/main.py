@@ -8,7 +8,7 @@ pygame.display.set_caption("cats and Ladders")
 WHITE = ((255, 255, 255))
 FPS = 60
 
-bg_image = pygame.image.load('assets/ladders.png')
+bg_image = pygame.image.load('Art/Ladders_Finish.png')
 bg_size = pygame.transform.scale(bg_image, (700, 700))
 
 cat = []
