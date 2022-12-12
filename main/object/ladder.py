@@ -1,50 +1,42 @@
 import pygame
-from Randcard import randcard
+import os
+import random
+from buttton import Button
 
-class LadderSnake(object):
+back3_path = 'Art/Card_Back3.png'
+back5_path = 'Art/Card_Back5.png'
+forward3_path = 'Art/Card_Forward3.png'
+forward5_path = 'Art/Card_Forward5.png'
+start_path = 'Art/Card_Start.png'
+stop_path = 'Art/Card_Stop.png'
+
+class Card(object):
     def __init__(self):
-        self.chanel = {
-            #index 0,1 is row and column where cat stand
-            #index 2,3 is row and column where cat move to
-            #ladders
-            'ch4' : [1,4,3,5],
-            'ch13' : [2,3,5,6],
-            'ch33' : [4,3,5,9],
-            'ch42' : [5,2,7,8],
-            'ch50' : [5,10,7,9],
-            'ch62' : [7,2,9,1],
-            'ch74' : [8,4,10,2],
-            #snake
-            'ch27' : [3,7,1,5],
-            'ch40' : [4,10,1,3],
-            'ch43' : [5,3,2,8],
-            'ch54' : [6,4,4,1],
-            'ch66' : [7,6,5,5],
-            'ch76' : [8,6,6,8],
-            'ch89' : [9,9,6,3],
-            'ch99' : [10,9,5,1],
-            #card
-            'ch10' : [1,10],
-            'ch15' : [2,6],
-            'ch20' : [2,1],
-            'ch29' : [3,9],
-            'ch37' : [4,4],
-            'ch52' : [6,2],
-            'ch56' : [6,5],
-            'ch61' : [7,1],
-            'ch71' : [8,10],
-            'ch77' : [8,4],
-            'ch86' : [9,6],
-            'ch93' : [10,3],
-            'ch98' : [10,3]
-        }
-        self.row_lad = 1
-        self.column_lad = 1
-    
-    def move(self,row,column):
-        self.row_lad = row
-        self.column_lad = column
-        for x in self.chanel:
-            if self.chanel[x][0] == row and self.chanel[x][1] == column:
-                self.row_lad = self.chanel[x][2]
-                self.column_lad = self.chanel[x][3]
+        self.back3 = pygame.image.load(back3_path)
+        self.back5 = pygame.image.load(back5_path)
+        self.forward3 = pygame.image.load(forward5_path)
+        self.forward5 = pygame.image.load(forward5_path)
+        self.start = pygame.image.load(start_path)
+        self.stop = pygame.image.load(stop_path)
+
+    def show(self, screen):
+        self.pic = random.randrange(1,7,1)
+        if self.pic == 1:
+            screen.blit(self.back3, (350,350))
+            self.text = "back3"
+        elif self.pic == 2:
+            screen.blit(self.back5, (350,350))
+            self.text = "back5"
+        elif self.pic == 3:
+            screen.blit(self.forward3, (350,350))
+            self.text = "forward3"
+        elif self.pic == 4:
+            screen.blit(self.forward5, (350,350))
+            self.text = "forward5"
+        elif self.pic == 5:
+            screen.blit(self.start, (350,350))
+            self.text = "start"
+        elif self.pic == 6:
+            screen.blit(self.stop, (350,350))
+            self.text = "stop"
+
