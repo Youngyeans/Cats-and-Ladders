@@ -10,14 +10,18 @@ class Dice(object):
         self.dice_rolling_images = []
 
         for num in range(1,10):
-            self.dice_rolling_image = pygame.transform.scale(pygame.image.load('assets/dice_roll' + str(num) + '.png'), (128, 128))
+            self.dice_rolling_image = pygame.transform.scale(pygame.image.load('main/assets/dice_roll' + str(num) + '.png'), (128, 128))
             self.dice_rolling_images.append(self.dice_rolling_image)
 
         for num in range(1,7):
-            self.dice_image = pygame.image.load('assets/' + str(num) + '_dots.png')
+            if num == 1:
+                self.dice_image = pygame.transform.scale(pygame.image.load('Art/1_dots.png'), (128, 128))
+            else:
+                self.dice_image = pygame.image.load('main/assets/' + str(num) + '_dots.png')
             self.dice_images.append(self.dice_image)
 
     def dicing(self, screen):
+        self.transparent = (0, 0, 0, 0)
         key = pygame.key.get_pressed()
         if key[pygame.K_SPACE] and not self.isrolling:
             self.isrolling = True
@@ -31,6 +35,8 @@ class Dice(object):
                 if self.dice_image_count >= 8:
                     self.dice_image_count = 0
                     if not key[pygame.K_SPACE]:
+                        self.dice.image = self.dice_rolling_images[self.dice_image_count]
+                        self.dice_image.fill(self.transparent)
                         screen.blit(self.dice_images[self.randonnum], (280, 280))
                         pygame.display.update()
                         pygame.time.delay(300)
